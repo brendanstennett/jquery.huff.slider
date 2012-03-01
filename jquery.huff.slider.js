@@ -1,5 +1,28 @@
+/*
+ * Copyright (c) 2012 Brendan Stennett
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
+ * and associated documentation files (the "Software"), to deal in the Software without restriction, 
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, 
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is 
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or 
+ * substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT 
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 (function($, undefined) {
   
+  
+  /*
+   * Advances slider to previous item
+   */
   function prev_item(item) {
     
     var settings = item.data('settings');
@@ -16,6 +39,9 @@
         goto_item(item, size-1);
   }
 
+  /*
+   * Advances slider to next item
+   */
   function next_item(item) {
     
     var settings = item.data('settings');
@@ -31,6 +57,9 @@
         goto_item(item, 0);
   }
 
+  /*
+   * Advances slider to specified item
+   */
   function goto_item(item, index) {
     reset_timer(item);
     
@@ -56,12 +85,18 @@
     }
   }
 
+  /*
+   * Sets configuration value for slider
+   */
   function set(item, obj) {
     var settings = item.data('settings');
     $.extend(settings, obj);
     item.data('settings', settings);
   }
   
+  /*
+   * Resets slider automatic timer
+   */
   function reset_timer(item) {
     var settings = item.data('settings');
     var interval = item.data('interval');
@@ -77,6 +112,9 @@
   
   $.fn.huffslider = function(arg1, arg2, arg3) {
 
+    /*
+     * Default settings
+     */
     var settings ={
       easing : "linear",
       transition_speed : 750,
